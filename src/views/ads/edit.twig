@@ -1,0 +1,17 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ 'Edit ad'|trans }}
+{% endblock %}
+
+{% block content %}
+    {% for flashMessage in app.session.getFlashBag.get('message') %}
+        <div class="alert alert-{{ flashMessage.type }}" role="alert">
+            {{ flashMessage.content }}
+        </div>
+    {% endfor %}
+    <form action="{{ url('ads_edit', {id: id}) }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" name="submit" value="{{ 'Save'|trans }}"/>
+    </form>
+{% endblock %}

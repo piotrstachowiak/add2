@@ -1,0 +1,21 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h3> {{ 'Your ads'|trans}}: </h3>
+    <ul>
+        {% for row in ads %}
+            <li>
+                <a href="{{ url('ads_view', {'id': row.id}) }}" title="View ad">
+                    {{row.title|upper}}
+                </a>
+                {{row.text}}
+                <a href="{{ url('ads_edit', {'id': row.id}) }}" title="{{ 'Edit ad'|trans }}"> 
+                    {{ 'Edit ad'|trans }} 
+                </a>
+                <a class="delete" href="{{ url('ads_delete', {'id': row.id}) }}" title="{{ 'Delete ad'|trans }}"> 
+                    {{ 'Delete ad'|trans }} 
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

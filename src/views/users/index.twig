@@ -1,0 +1,30 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h1>Users</h1>
+    {% for flashMessage in app.session.getFlashBag.get('message') %}
+        <div class="alert alert-{{ flashMessage.type }}" role="alert">
+            {{ flashMessage.content }}
+        </div>
+    {% endfor %}
+    <ul>
+        {% for row in users %}
+            <li>
+                {{row.login|upper}}
+                {{row.mail}}
+                 <a href="{{ url('users_edit', {'id': row.id}) }}" title="Edit user">
+                    {{ 'Edit user'|trans }}
+                 </a>
+                 <a id="delete_ad" href="{{ url('users_delete', {'id': row.id}) }}" title="Delete user">
+                    {{ 'Delete user'|trans }}
+                 </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url('users_add') }}" title="Add user"> 
+        {{'Add user'|trans}} 
+    </a>
+    <a href="{{ url('main_index') }}" title="Return"> 
+        {{'Return'|trans}} 
+    </a>
+{% endblock %}

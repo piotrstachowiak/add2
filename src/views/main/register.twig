@@ -1,0 +1,13 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ 'Register'|trans }}
+{% endblock %}
+
+{% block content %}
+    <h3> {{'Register'|trans}} </h3>
+    <form action="{{ url('main_register') }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" name="submit" value="{{ 'Register'|trans }}"/>
+    </form>
+{% endblock %}

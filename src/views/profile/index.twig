@@ -1,0 +1,26 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h3> {{ 'Profile'|trans }} </h3>
+    <h4> {{ 'Hello'|trans }} {{login}}!</h4>
+    {% for flashMessage in app.session.getFlashBag.get('message') %}
+        <div class="alert alert-{{ flashMessage.type }}" role="alert">
+            {{ flashMessage.content }}
+        </div>
+    {% endfor %}
+    <p>
+        <a href="{{ url('profile_ads') }}" title="{{'View your ads'|trans}}">
+            {{'View your ads'|trans}}
+        </a>
+    </p>
+    <p>
+        <a href="{{ url('profile_edit') }}" title="{{'Edit profile'|trans}}">
+            {{'Edit profile'|trans}}
+        </a>
+    </p>
+    <p>
+        <a href="{{ url('profile_change_password') }}" title="{{'Change password'|trans}}">
+            {{'Change password'|trans}}
+        </a>
+    </p>
+{% endblock %}

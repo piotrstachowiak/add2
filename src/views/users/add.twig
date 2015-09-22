@@ -1,0 +1,12 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ 'Add user'|trans }}
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url('users_add') }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" name="submit" value="{{ 'Save'|trans }}"/>
+    </form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    <h3> {{ 'Admin panel'|trans }} </h3>
+    {% for flashMessage in app.session.getFlashBag.get('message') %}
+        <div class="alert alert-{{ flashMessage.type }}" role="alert">
+            {{ flashMessage.content }}
+        </div>
+    {% endfor %}
+    <h4> {{ 'Users'|trans }}: </h4>
+    <ul>
+        {% for row in users %}
+            <li>
+                {{row.login|upper}}
+                {{row.mail}}
+                 <a href="{{ url('users_edit', {'id': row.id}) }}" title="{{ 'Edit user'|trans }}">
+                    {{ 'Edit user'|trans }}
+                 </a>
+                 <a class="delete" href="{{ url('users_delete', {'id': row.id}) }}" title="{{ 'Delete user'|trans }}">
+                    {{ 'Delete user'|trans }}
+                 </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url('users_add') }}" title="{{ 'Add user'|trans }}"> 
+        {{'Add user'|trans}} 
+    </a>
+    <h4> {{ 'Ads'|trans }}: </h4>
+    <ul>
+        {% for row in ads %}
+            <li>
+                <a href="{{ url('ads_view', {'id': row.id}) }}" title="{{ 'View ad'|trans }}">
+                    {{row.title|upper}}
+                </a>
+                {{row.text}}
+                <a href="{{ url('ads_edit', {'id': row.id}) }}" title="{{ 'Edit ad'|trans }}"> 
+                    {{ 'Edit ad'|trans }} 
+                </a>
+                <a class="delete" href="{{ url('ads_delete', {'id': row.id}) }}" title="{{ 'Delete ad'|trans }}"> 
+                    {{ 'Delete ad'|trans }} 
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url('ads_add') }}" title="{{ 'Add ad'|trans }}"> 
+        {{'Add ad'|trans}} 
+    </a>
+{% endblock %}

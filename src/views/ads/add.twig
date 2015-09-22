@@ -1,0 +1,13 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ 'Add ad'|trans }}
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url('ads_add') }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" name="submit" value="{{ 'Save'|trans }}"/>
+    </form>
+    <a href="{{ url('ads_index') }}"> {{ 'Return'|trans }} </a>
+{% endblock %}

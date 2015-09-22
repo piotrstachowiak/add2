@@ -1,0 +1,12 @@
+{% extends 'base.twig' %}
+
+{% block title %}
+    {{ 'Edit profile'|trans }}
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url('profile_edit') }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" name="submit" value="{{ 'Save'|trans }}"/>
+    </form>
+{% endblock %}
