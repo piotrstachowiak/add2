@@ -15,17 +15,26 @@
                 <a href="{{ url('ads_view', {'id': row.id}) }}" title="View ad">
                     {{row.title|upper}}
                 </a>
+		{% if is_granted('ROLE_MOD') %}
+		    <a href="{{ url('ads_edit', {'id': row.id}) }}" title="Edit ad">
+			{{ 'Edit ad'|trans }}
+		    </a>
+	
+		    <a href="{{ url('ads_delete', {'id': row.id}) }}" title="{{ 'Delete ad'|trans }}">
+			{{ 'Delete ad'|trans }}
+		    </a>
+		{% endif %}
             </li>
         {% endfor %}
     </ul>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <p>
-            <a href="{{ url('ads_add') }}" title="Add ad"> 
+            <a href="{{ url('ads_add') }}" class="btn" title="Add ad"> 
                 {{'Add ad'|trans}} 
             </a>
         </p>      
         <p>     
-            <a href="{{ url('profile_ads') }}" title="View your ads">
+            <a href="{{ url('profile_ads') }}" class="btn" title="View your ads">
                 {{'View your ads'|trans}}
             </a>
         </p>

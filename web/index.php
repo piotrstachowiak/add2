@@ -38,9 +38,9 @@ $app->register(
         'db.options' => array(
             'driver'    => 'pdo_mysql',
             'host'      => 'localhost',
-            'dbname'    => 'add',
-            'user'      => 'root',
-            'password'  => 'root',
+            'dbname'    => '12_stachowiak',
+            'user'      => '12_stachowiak',
+            'password'  => 'epi123',
             'charset'   => 'utf8',
             'driverOptions' => array(
                 1002=>'SET NAMES utf8'
@@ -82,10 +82,11 @@ $app->register(
             array('^/ads/$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
             array('^/register/$', 'IS_AUTHENTICATED_ANONYMOUSLY'),
             array('^/ads/view/.+$', 'ROLE_USER'),
+	    array('^/ads/add/$', 'ROLE_USER'),
             array('^/profile/$', 'ROLE_USER'),
             array('^/profile/.+$', 'ROLE_USER'),
             array('^/users/$', 'ROLE_ADMIN'),
-            array('^/ads/.+$', 'ROLE_ADMIN')
+	    array('^/admin/$', 'ROLE_ADMIN')
         ),
         'security.role_hierarchy' => array(
             'ROLE_ADMIN' => array('ROLE_MOD'),

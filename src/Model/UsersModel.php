@@ -146,7 +146,7 @@ class UsersModel
     public function getCurrentUser(Application $app)
     {
         $token = array();
-        $token = $app['security.token_storage']->getToken();
+        $token = $app['security']->getToken();
         $login = $token->getUser()->getUsername();
         $user = $this->getUserByLogin($login);
         return $user;

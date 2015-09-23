@@ -40,6 +40,7 @@ class AdForm extends AbstractType
             'title', 
             'text',
             array(
+		'label' => 'Tytuł ogłoszenia',
                 'constraints' => array(
                     new Assert\NotBlank(),
                     new Assert\Length(array('min' => 5))
@@ -50,6 +51,7 @@ class AdForm extends AbstractType
             'text', 
             'text',
             array(
+		'label' => 'Opis',
                 'constraints' => array(
                     new Assert\NotBlank(),
                     new Assert\Length(array('min' => 5))
@@ -60,6 +62,7 @@ class AdForm extends AbstractType
             'category',
             'choice',
             array(
+		'label' => 'Kategoria',
                 'choices' => $categories,
                 'constraints' => array(
                     new Assert\NotBlank()

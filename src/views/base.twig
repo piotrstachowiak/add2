@@ -5,6 +5,7 @@
         {% block head %}
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="{{ app.request.basepath }}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	    <link href="{{app.request.basepath }}/assets/css/style.css" rel="stylesheet" media="screen">
             <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
             <script src="{{ app.request.basepath }}/assets/bootstrap/js/bootstrap.min.js"></script>
             <script src="{{ app.request.basepath }}/assets/js/script.js"></script>
@@ -17,34 +18,34 @@
             {% block nav %}
                 <nav>
                     <h2>
-                        ADD...
+                        <span>ADD</span>
                         <a href="{{ url('main_index') }}" title="{{ 'Homepage'|trans }}">
-                            {{ 'Homepage'|trans }}...
+                            {{ 'Homepage'|trans }}
                         </a>
                         <a href="{{ url('ads_index') }}" title="{{ 'View ads'|trans }}"> 
-                            {{ 'Ads'|trans }}...
+                            {{ 'Ads'|trans }}
                         </a>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <a href="{{ url('profile_index') }}" title="{{ 'Profile'|trans }}">
-                                {{ 'Profile'|trans }}...
+                                {{ 'Profile'|trans }}
                             </a>
                         {% else %}
                             <a href="{{ url('main_register') }}" title="{{ 'Register'|trans }}">
-                                {{ 'Register'|trans }}...
+                                {{ 'Register'|trans }}
                             </a>
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ url('admin_index') }}" title="{{ 'Admin panel'|trans }}">
-                                {{ 'Admin panel'|trans }}...
+                                {{ 'Admin panel'|trans }}
                             </a>
                         {% endif %}
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <a href="{{ url('auth_logout') }}" title="{{ 'Logout'|trans }}">
-                                {{ 'Logout'|trans }}...
+                                {{ 'Logout'|trans }}
                             </a>
                         {% else %}
                             <a href="{{ url('auth_login') }}" title="{{ 'Login'|trans }}">
-                                {{ 'Log in'|trans }}...
+                                {{ 'Log in'|trans }}
                             </a>
                         {% endif %}
                     </h2>

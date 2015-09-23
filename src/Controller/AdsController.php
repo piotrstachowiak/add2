@@ -99,12 +99,12 @@ class AdsController implements ControllerProviderInterface
             $app['session']->getFlashBag()->add(
                 'message', array(
                     'type' => 'success', 'content' => $app['translator']->trans(
-                        'New ad added.'
+                        'New ad added'
                     )
                 )
             );
             return $app->redirect(
-                $app['url_generator']->generate('admin_index'), 
+                $app['url_generator']->generate('ads_index'), 
                 301
             );
         }
@@ -125,9 +125,9 @@ class AdsController implements ControllerProviderInterface
         $current_user_id = $userModel->getCurrentUserId($app);
         $current_user_role = $userModel->getUserRoles($current_user_id);
         
-        if ($current_user_role='ROLE_ADMIN' 
-        || $current_user_role='ROLE_MOD'
-        || $ad_owner = $current_user_id) {
+        if ($current_user_role=='ROLE_ADMIN' 
+        || $current_user_role=='ROLE_MOD'
+        || $ad_owner == $current_user_id) {
             $categoriesModel = new CategoriesModel($app);
             $ad['categories'] = $categoriesModel->getAll();
 
@@ -145,7 +145,7 @@ class AdsController implements ControllerProviderInterface
                     $app['session']->getFlashBag()->add(
                         'message', array(
                             'type' => 'success', 'content' => $app['translator']->trans(
-                                'Ad edited.'
+                                'Ad updated'
                             )
                         )
                     );
